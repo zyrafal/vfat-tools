@@ -59,7 +59,7 @@ const main = async() => {
       [
         "Beefy",
         `<a href='beefy'>Various</a>`,
-        "Various",
+        "BIFI",
         "https://fantom.beefy.finance"
       ],
       [
@@ -99,7 +99,7 @@ const main = async() => {
         "https://waka.finance"
       ],
       [
-        "Elk",
+        "Elk *",
         `<a href='elk'>Various</a>`,
         "ELK",
         "https://app.elk.finance"
@@ -113,13 +113,13 @@ const main = async() => {
       [
         "Tomb",
         `<a href='tomb'>Various</a>`,
-        "Various",
+        "TOMB",
         "https://tomb.finance"
       ],
       [
         "Shadow",
         `<a href='shadow'>Various</a>`,
-        "Various",
+        "SHADOW",
         "https://shadowswap.app"
       ],
       [
@@ -142,7 +142,7 @@ const main = async() => {
       ],
       [
         "Guru",
-        `<a href='guru'>Various</a>`,
+        `<a href='guru'>ELITE-WFTM SLP</a>`,
         "ELITE",
         "https://ftm.guru"
       ],
@@ -155,7 +155,7 @@ const main = async() => {
       [
         "Mlnl",
         `<a href="mlnl">Various</a>`,
-        "Various",
+        "MLNL",
         "https://milfinance.xyz"
       ],
       [
@@ -209,7 +209,7 @@ const main = async() => {
       [
         "Grim",
         `<a href='grim'>Various</a>`,
-        "Various",
+        "GRIM",
         "https://app.grim.finance"
       ],
       [
@@ -229,6 +229,36 @@ const main = async() => {
         `<a href='behodl'>Various</a>`,
         "beHODL",
         "N/A"
+      ],
+      [
+        "AURA",
+        `<a href='aura'>Various</a>`,
+        "AURA",
+        "https://dapp.aurafi.org/"
+      ],
+      [
+        "Galaxy Finance One",
+        `<a href='galaxy_triton'>Various</a>`,
+        "TRITON",
+        "https://fantom-triton.galaxyfinance.one/"
+      ],
+      [
+        "ShibaSwap - GBONE",
+        `<a href='shibaswap'>Various</a>`,
+        "GBONE",
+        "https://shibafantom.finance"
+      ],
+      [
+        "ShibaSwap - BONE",
+        `<a href='shibaswap_bone'>Various</a>`,
+        "BONE",
+        "https://shibafantom.finance"
+      ],
+      [
+        "Guru - LF#1",
+        `<a href='guru'>NIPS-WFTM ZDEXLP</a>`,
+        "NIPS",
+        "https://ftm.guru"
       ]
     ]
   }

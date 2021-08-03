@@ -1542,6 +1542,10 @@ function getUniPrices(tokens, prices, pool, chain="eth")
   else if (pool.symbol.includes("BenSwap")) stakeTokenTicker += " BenSwap LP";
   else if (pool.symbol.includes("BRUSH-LP")) stakeTokenTicker += " BRUSH LP";
   else if (pool.symbol.includes("APE-LP")) stakeTokenTicker += " APE LP";
+  else if (pool.symbol.includes("Galaxy-LP")) stakeTokenTicker += " Galaxy LP";
+  else if (pool.symbol.includes("KUS-LP")) stakeTokenTicker += " KUS LP";
+  else if (pool.symbol.includes("KoffeeMug")) stakeTokenTicker += " KoffeeMug";
+  else if (pool.symbol.includes("DMM-LP")) stakeTokenTicker += " Kyber LP";
   else stakeTokenTicker += " Uni LP";
   return {
       t0: t0,
@@ -1595,6 +1599,8 @@ function getUniPrices(tokens, prices, pool, chain="eth")
               pool.symbol.includes("BRUSH-LP") ?  `https://paintswap.finance` :
               pool.symbol.includes("PLP") ?  `https://exchange.pureswap.finance/#/swap` :
               pool.symbol.includes("BLP") ?  `https://info.bakeryswap.org/#/pair/${pool.address}` :
+              pool.symbol.includes("KUS-LP") ?  `https://kuswap.info/pair/#/${pool.address}` :
+              pool.symbol.includes("KoffeeMug") ?  `https://koffeeswap.exchange/#/pro` :
               pool.symbol.includes("APE-LP") ?  `https://info.apeswap.finance/pair/${pool.address}` :
               pool.symbol.includes("ZDEXLP") ?  `https://charts.zoocoin.cash/?exchange=ZooDex&pair=${t0.symbol}-${t1.symbol}` :
               pool.symbol.includes("Field-LP") ?  `https://exchange.yieldfields.finance/#/swap` :
@@ -1602,6 +1608,13 @@ function getUniPrices(tokens, prices, pool, chain="eth")
               pool.symbol.includes("BenSwap") ? ({
                 "bsc": `https://info.benswap.finance/pair/${pool.address}`
               }[chain]) :
+              pool.symbol.includes("Galaxy-LP") ? (
+                {
+                    "bsc": `https://bsc-exchange.galaxyfinance.one/#/swap`,
+                    "heco": `https://heco-exchange.galaxyfinance.one/#/swap`,
+                    "matic": `https://polygon-exchange.galaxyfinance.one/#/swap`,
+                    "fantom": `https://fantom-exchange.galaxyfinance.one/#/swap`,
+                }[chain]) :
               chain == "matic" ? `https://info.quickswap.exchange/pair/${pool.address}` :
             `http://uniswap.info/pair/${pool.address}`;
           const helperUrls = pool.is1inch ? [] :
@@ -1702,11 +1715,43 @@ function getUniPrices(tokens, prices, pool, chain="eth")
               `https://dex.benswap.finance/#/swap?inputCurrency=${t0address}&outputCurrency=${t1address}`
             ]
           }[chain]) :
+          pool.symbol.includes("Galaxy-LP") ? ({
+            "bsc": [
+              `https://bsc-exchange.galaxyfinance.one/#/add/${t0address}/${t1address}`,
+              `https://bsc-exchange.galaxyfinance.one/#/remove/${t0address}/${t1address}`,
+              `https://bsc-exchange.galaxyfinance.one/#/swap?inputCurrency=${t0address}&outputCurrency=${t1address}`
+            ],
+            "heco": [
+              `https://heco-exchange.galaxyfinance.one/#/add/${t0address}/${t1address}`,
+              `https://heco-exchange.galaxyfinance.one/#/remove/${t0address}/${t1address}`,
+              `https://heco-exchange.galaxyfinance.one/#/swap?inputCurrency=${t0address}&outputCurrency=${t1address}`
+            ],
+            "polygon": [
+              `https://polygon-exchange.galaxyfinance.one/#/add/${t0address}/${t1address}`,
+              `https://polygon-exchange.galaxyfinance.one/#/remove/${t0address}/${t1address}`,
+              `https://polygon-exchange.galaxyfinance.one/#/swap?inputCurrency=${t0address}&outputCurrency=${t1address}`
+            ],
+            "fantom": [
+              `https://fantom-exchange.galaxyfinance.one/#/add/${t0address}/${t1address}`,
+              `https://fantom-exchange.galaxyfinance.one/#/remove/${t0address}/${t1address}`,
+              `https://fantom-exchange.galaxyfinance.one/#/swap?inputCurrency=${t0address}&outputCurrency=${t1address}`
+            ]
+          }[chain]) :
           chain=='matic'? [
             `https://quickswap.exchange/#/add/${t0address}/${t1address}`,
             `https://quickswap.exchange/#/remove/${t0address}/${t1address}`,
             `https://quickswap.exchange/#/swap?inputCurrency=${t0address}&outputCurrency=${t1address}`
           ] :
+          pool.symbol.includes("KUS-LP") ? [
+              `https://kuswap.finance/#/add/${t0address}/${t1address}`,
+              `https://kuswap.finance/#/remove/${t0address}/${t1address}`,
+              `https://kuswap.finance/#/swap?inputCurrency=${t0address}&outputCurrency=${t1address}`
+          ] :
+          pool.symbol.includes("KoffeeMug") ? [
+            `https://koffeeswap.exchange/#/add/${t0address}/${t1address}`,
+            `https://koffeeswap.exchange/#/remove/${t0address}/${t1address}`,
+            `https://koffeeswap.exchange/#/swap?inputCurrency=${t0address}&outputCurrency=${t1address}`
+        ] :
           t0.symbol.includes("COMFI") ? [
             `https://app.uniswap.org/#/add/v2/${t0address}/${t1address}`,
             `https://app.uniswap.org/#/remove/v2/${t0address}/${t1address}`,
@@ -1760,6 +1805,12 @@ function getUniPrices(tokens, prices, pool, chain="eth")
                           pool.symbol.includes("BenSwap") ? ({
                             "bsc": `https://info.benswap.finance/pair/${pool.address}`
                           }[chain]) :
+                          pool.symbol.includes("Galaxy-LP") ? ({
+                            "bsc": `https://bsc-exchange.galaxyfinance.one/#/swap`,
+                            "heco": `https://heco-exchange.galaxyfinance.one/#/swap`,
+                            "polygon": `https://polygon-exchange.galaxyfinance.one/#/swap`,
+                            "fantom": `https://fantom-exchange.galaxyfinance.one/#/swap`
+                          }[chain]) :
                             chain == "matic" ? `https://info.quickswap.exchange/pair/${pool.address}` :
                               `http://uniswap.info/pair/${pool.address}`;
           const helperUrls = pool.is1inch ? [] :
@@ -1805,6 +1856,28 @@ function getUniPrices(tokens, prices, pool, chain="eth")
                               `https://dex.benswap.finance/#/swap?inputCurrency=${t0address}&outputCurrency=${t1address}`
                             ]
                           }[chain]) :
+                        pool.symbol.includes("Galaxy-LP") ? ({
+                            "bsc": [
+                            `https://bsc-exchange.galaxyfinance.one/#/add/${t0address}/${t1address}`,
+                            `https://bsc-exchange.galaxyfinance.one/#/remove/${t0address}/${t1address}`,
+                            `https://bsc-exchange.galaxyfinance.one/#/swap?inputCurrency=${t0address}&outputCurrency=${t1address}`
+                            ],
+                            "heco": [
+                            `https://heco-exchange.galaxyfinance.one/#/add/${t0address}/${t1address}`,
+                            `https://heco-exchange.galaxyfinance.one/#/remove/${t0address}/${t1address}`,
+                            `https://heco-exchange.galaxyfinance.one/#/swap?inputCurrency=${t0address}&outputCurrency=${t1address}`
+                            ],
+                            "polygon": [
+                            `https://polygon-exchange.galaxyfinance.one/#/add/${t0address}/${t1address}`,
+                            `https://polygon-exchange.galaxyfinance.one/#/remove/${t0address}/${t1address}`,
+                            `https://polygon-exchange.galaxyfinance.one/#/swap?inputCurrency=${t0address}&outputCurrency=${t1address}`
+                            ],
+                            "fantom": [
+                            `https://fantom-exchange.galaxyfinance.one/#/add/${t0address}/${t1address}`,
+                            `https://fantom-exchange.galaxyfinance.one/#/remove/${t0address}/${t1address}`,
+                            `https://fantom-exchange.galaxyfinance.one/#/swap?inputCurrency=${t0address}&outputCurrency=${t1address}`
+                            ]
+                        }[chain]) :
                             t0.symbol.includes("COMFI") ? [
                                 `https://app.uniswap.org/#/add/v2/${t0address}/${t1address}`,
                                 `https://app.uniswap.org/#/remove/v2/${t0address}/${t1address}`,
